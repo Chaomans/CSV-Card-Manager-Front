@@ -1,4 +1,5 @@
 import Card from "./card.js";
+import { load } from "./csv.js";
 const path = "data/cardlist.json";
 
 const setAllCards = async () => {
@@ -26,27 +27,42 @@ const init = async () => {
   );
   const codeInput = document.querySelector("#card_code");
   const sets = document.querySelector("#set_name");
+  let timeout;
   codeInput.addEventListener("keyup", (e) => {
-    if (e.target.value.length === 8) {
-      const card = new Card(codeInput.value, cardlist);
-      sets.innerHTML = card
-        .sets()
-        .map(
-          (set) =>
-            `<option value=${set.code}>${set.name} - ${set.code}</option>`
-        )
-        .join("\n");
-      sets.disabled = false;
-    } else {
-      sets.disabled = true;
-      sets.innerHTML = "";
-    }
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      if (e.target.value.length === 8) {
+        const card = new Card(codeInput.value, cardlist);
+        console.log(card);
+        sets.innerHTML = card
+          .sets()
+          .map(
+            (set) =>
+              `<option value=${set.code}>${set.name} - ${set.code} (${set.rarity})</option>`
+          )
+          .join("\n");
+        sets.disabled = false;
+        const src = card.infos.card_images[0].image_url_small;
+        document.querySelector(
+          "#preview_art"
+        ).innerHTML = `<img src="${src}" alt="${card.infos.name}"></img>`;
+      } else {
+        sets.disabled = true;
+        sets.innerHTML = "";
+        document.querySelector("#preview_art").innerHTML = "";
+      }
+    }, 250);
   });
   const form = document.querySelector("form");
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const card = new Card(codeInput.value, cardlist);
-    console.log(card);
+  });
+
+  const loadInput = document.querySelector(".load");
+  loadInput.addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    console.log(file);
+    load(file);
   });
 };
 

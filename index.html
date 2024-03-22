@@ -18,14 +18,15 @@
           <label for="card_code"></label>
           <input type="number" name="card_code" id="card_code" maxlength="8" />
           <select name="set_name" id="set_name" disabled></select>
-          <div class="preview">
-            <div class="preview_art"></div>
-            <div class="preview_info" id="infos"></div>
-          </div>
           <button class="submit" id="btn_submit">Add</button>
         </form>
+        <div class="preview">
+          <div class="preview_art" id="preview_art"></div>
+          <div class="preview_info" id="infos"></div>
+        </div>
       </div>
       <div class="gallery">
+        <input type="file" class="load" accept=".csv" />
         <div class="search"></div>
         <div class="cards"></div>
       </div>
