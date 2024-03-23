@@ -3,26 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>CSV Card Manager</title>
+    <meta
+      name="description"
+      content="Manage your YGO card collection using CSV file !"
+    />
+    <link rel="stylesheet" href="css/index.css" />
     <script language="javascript" src="libs/lz-string.min.js"></script>
     <script src="scripts/index.js" type="module"></script>
   </head>
   <body>
     <header>
-      <a href="/"><img src="" alt="Main logo " /></a>
+      <!-- <a href="/"><img src="" alt="Main logo " /></a> -->
       <h1>CSV Card Manager</h1>
+      <span class="title-bar"></span>
+      <p>Manage your YGO card collection using CSV file !</p>
     </header>
     <main>
       <div class="add">
-        <form>
-          <label for="card_code"></label>
-          <input type="number" name="card_code" id="card_code" maxlength="8" />
-          <select name="set_name" id="set_name" disabled></select>
-          <button class="submit" id="btn_submit">Add</button>
-        </form>
-        <div class="preview">
-          <div class="preview_art" id="preview_art"></div>
-          <div class="preview_info" id="infos"></div>
+        <p class="desc">Find your card</p>
+        <div class="card-finder">
+          <form>
+            <label for="card_code">Card code (8 digits)</label>
+            <input
+              type="number"
+              name="card_code"
+              id="card_code"
+              maxlength="8"
+            />
+            <select name="set_name" id="set_name" disabled></select>
+            <button class="submit" id="btn_submit">Add</button>
+          </form>
+          <div class="preview">
+            <div class="preview_art" id="preview_art"></div>
+          </div>
         </div>
       </div>
       <div class="gallery">

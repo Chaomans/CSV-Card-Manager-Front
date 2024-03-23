@@ -1,3 +1,4 @@
+import { CardInfos } from "../template/cardInfo.js";
 import Card from "./card.js";
 import { load } from "./csv.js";
 const path = "data/cardlist.json";
@@ -46,10 +47,13 @@ const init = async () => {
         document.querySelector(
           "#preview_art"
         ).innerHTML = `<img src="${src}" alt="${card.infos.name}"></img>`;
+        document.querySelector("#preview_infos")?.remove();
+        document.querySelector(".preview").appendChild(CardInfos(card.infos));
       } else {
         sets.disabled = true;
         sets.innerHTML = "";
         document.querySelector("#preview_art").innerHTML = "";
+        document.querySelector("#preview_infos")?.remove();
       }
     }, 250);
   });
