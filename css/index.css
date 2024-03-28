@@ -115,7 +115,7 @@ form button:hover {
 }
 
 .preview {
-  height: 410px;
+  min-height: 410px;
   padding: 10px 0;
   display: flex;
   gap: 30px;

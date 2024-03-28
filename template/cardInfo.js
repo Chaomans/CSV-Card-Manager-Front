@@ -16,7 +16,7 @@
 
 const CardInfosMonster = (infos) => {
   const previewInfos = document.createElement("div");
-  previewInfos.classList.add("preview_info");
+  previewInfos.classList.add("preview_infos");
   previewInfos.setAttribute("id", "preview_infos");
 
   const name = document.createElement("p");
@@ -71,7 +71,7 @@ const CardInfosMonster = (infos) => {
  */
 const CardInfosOther = (infos) => {
   const previewInfos = document.createElement("div");
-  previewInfos.classList.add("preview_info");
+  previewInfos.classList.add("preview_infos");
   previewInfos.setAttribute("id", "preview_infos");
 
   const name = document.createElement("p");
